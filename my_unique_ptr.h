@@ -5,7 +5,7 @@
 
 namespace kapil {
   template <typename T>
-  class unique_ptr final {
+  class unique_ptr {
     private:
       T* ptr_;
       unique_ptr(const unique_ptr&) = delete;               // Make unique_ptr non copy constructible
@@ -15,7 +15,7 @@ namespace kapil {
       explicit unique_ptr (T* ptr = nullptr) noexcept
         : ptr_{ptr} { }
 
-      unique_ptr(unique_ptr<T>&& rval) noexcept               // Move constructor
+      unique_ptr(unique_ptr&& rval) noexcept               // Move constructor
         : ptr_{rval.ptr_} {
         rval.ptr_ = nullptr;
       }
